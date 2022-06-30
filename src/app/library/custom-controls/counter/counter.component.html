@@ -1,0 +1,59 @@
+<button
+  type="button"
+  *ngIf="!catalogue.addedToCart"
+  class="btn btn-light btn-outline-dark w-100"
+  (click)="modifyCart()"
+>
+  Add To Cart
+</button>
+
+<button
+  type="button"
+  *ngIf="catalogue.addedToCart"
+  class="btn btn-dark btn-outline-light w-100"
+  (click)="modifyCart()"
+>
+  Go to Cart
+</button>
+
+<!-- <div class="align-items-center d-flex justify-content-between" *ngIf="catalogue.addedToCart">
+    <label for="Quantity{{ catalogue.id }}">Quantity: </label>
+    <select class="form-select" [(ngModel)]="catalogue.selectedQuantity" id="Quantity{{ catalogue.id }}"
+        (change)="changesadas()">
+        <option *ngFor="let quantity of catalogue.quantityList; let i = index" [value]="+(quantity)">
+            {{ quantity }}
+        </option>
+    </select>
+</div> -->
+
+<!-- <div
+  class="align-items-center counter-input d-flex m-auto w-75"
+  *ngIf="catalogue.addedToCart"
+>
+  <fa-icon
+    [icon]="faMinus"
+    class="m-auto cursor-pointer"
+    size="lg"
+    (click)="changeSelectedQuantity(false)"
+  ></fa-icon>
+  <input
+    type="text"
+    class="border-0 text-center w-50"
+    value="{{ catalogue.selectedQuantity }}"
+    readonly
+  />
+  <i
+    class="fa fa-2x fa-plus m-auto"
+    [class.gray-color]="
+      catalogue.selectedQuantity ===
+      catalogue.quantityList[catalogue.quantityList.length - 1]
+    "
+    [ngClass]="
+      catalogue.selectedQuantity ===
+      catalogue.quantityList[catalogue.quantityList.length - 1]
+        ? 'cursor-default'
+        : 'cursor-pointer'
+    "
+    (click)="changeSelectedQuantity()"
+  ></i>
+</div> -->

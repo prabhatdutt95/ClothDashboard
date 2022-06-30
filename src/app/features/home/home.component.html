@@ -1,0 +1,110 @@
+<!-- Top-Navbar -->
+<app-top-nav [addedCatalogueItems]="addedCatalogueItems"></app-top-nav>
+
+<!-- Button trigger modal -->
+<button
+  type="button"
+  class="btn btn-primary"
+  data-bs-toggle="modal"
+  data-bs-target="#exampleModal"
+>
+  Launch demo modal
+</button>
+
+<!-- Modal -->
+<div
+  class="modal fade"
+  id="exampleModal"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">...</div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Close
+        </button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- <section class="search-segment"></section> -->
+
+<section class="custom-container container-fluid pt-5">
+  <aside class="left-panel"></aside>
+  <article class="border-0 right-panel">
+    <div class="row">
+      <div
+        class="col-sm-6 col-md-4"
+        *ngFor="let catalogue of catalogueItems; let i = index"
+      >
+        <div class="card m-2">
+          <span
+            *ngIf="catalogue.addedToCart"
+            class="badge bg-body position-absolute start-100 translate-middle"
+            (click)="removeFromCart(i)"
+          >
+            <button type="button" class="btn-close" aria-label="Close"></button>
+          </span>
+          <figure class="m-2">
+            <img
+              src="{{ catalogue.imageURL }}"
+              alt="{{ catalogue.name }}"
+              class="h-auto w-50 m-2 card-image-center"
+            />
+            <figcaption class="d-flex justify-content-around">
+              <p class="mb-0 mt-2">{{ catalogue.name }}</p>
+            </figcaption>
+          </figure>
+          <div
+            class="align-items-center card-body d-flex flex-column justify-content-between pt-0"
+          >
+            <p class="m-1">
+              {{
+                catalogue.price * catalogue.selectedQuantity
+                  | currency: catalogue.currency
+              }}
+            </p>
+            <app-counter
+              [catalogue]="catalogue"
+              (modifiedCatalogue)="filterAddedCatalogues()"
+            ></app-counter>
+            <!-- <div class="d-flex">
+              <label for="Quantity{{ catalogue.id }}">Quantity: </label>
+              <select
+                class="form-select"
+                [(ngModel)]="catalogue.selectedQuantity"
+                id="Quantity{{ catalogue.id }}"
+              >
+                <option value="0" disabled>Quantity</option>
+                <option *ngFor="let quantity of catalogue.quantityList">
+                  {{ quantity }}
+                </option>
+              </select>
+            </div>
+            <button
+              type="button"
+              class="btn btn-light btn-outline-dark w-100"
+              (click)="displayObject(catalogue)"
+            >
+              Add To Cart
+            </button> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </article>
+</section>

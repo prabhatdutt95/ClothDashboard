@@ -1,0 +1,38 @@
+<nav class="navbar navbar-expand-lg bg-light fixed-top">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Navbar</a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <form class="d-flex m-auto" role="search">
+        <input
+          class="form-control me-2"
+          type="search"
+          placeholder="Search"
+          aria-label="Search"
+        />
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+
+      <button type="button" class="btn position-relative m-1">
+        <span
+          *ngIf="addedCatalogueItems.length"
+          class="position-absolute badge-position start-100 translate-middle badge rounded-pill bg-danger"
+        >
+          {{ addedCatalogueItems.length }}
+          <span class="visually-hidden">Items Added to cart</span>
+        </span>
+        <fa-icon [icon]="faCartShopping" class="fa-2x"></fa-icon>
+      </button>
+    </div>
+  </div>
+</nav>
